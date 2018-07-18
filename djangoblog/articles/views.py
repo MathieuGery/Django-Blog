@@ -1,14 +1,16 @@
-from django.shortcuts import render, redirect
-from .models import Article
-from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import F
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
+
 from . import forms
+from .models import Article
+
 
 def user_list(request):
     articles = Article.objects.filter(author=request.user)
-    return render(request, 'articles/article_list.html', {'articles': articles})
+    return render(request, 'articles/article_manage.html', {'articles': articles})
 
 def article_delete(request, slug):
     Article.objects.get(slug=slug).delete()
