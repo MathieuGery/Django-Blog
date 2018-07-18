@@ -6,6 +6,8 @@ app_name='articles'
 
 urlpatterns = [
     path('', views.article_list, name="list"),
+    path('user_lsit/', views.user_list, name="user_list"),
     path('create/', views.article_create, name="create"),
+    path('delete/<slug:slug>/', views.article_delete, name="delete"),
     url(r'^(?P<slug>[\w-]+)/$', views.article_detail, name="detail"),
 ]

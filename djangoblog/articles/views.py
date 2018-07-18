@@ -2,7 +2,18 @@ from django.shortcuts import render, redirect
 from .models import Article
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.db.models import F
 from . import forms
+
+def user_list(request):
+    articles = Article.objects.filter(author=request.user)
+    return render(request, 'articles/article_list.html', {'articles': articles})
+
+def article_delete(request, slug):
+    Article.objects.get(slug=slug).delete()
+    articles = Article.objects.all().order_by('date')
+    return render(request, 'articles/article_list.html', {'articles': articles})
 
 def article_list(request):
     articles = Article.objects.all().order_by('date')

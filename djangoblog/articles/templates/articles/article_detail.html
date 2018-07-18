@@ -7,6 +7,6 @@
         <p>{{ article.body }}</p>
         <p>{{ article.date }}</p>
     </div>
-    <input type="submit" class="btn btn-default" value="Delete Article" name="delete">
+    <h3><a href="{% url 'articles:delete' slug=article.slug %}">Delete Article</a></h3>
 </div>
 {% endblock %}

@@ -12,6 +12,7 @@
         <nav>
             <ul>
                 {% if user.is_authenticated %}
+                <li><a href="{% url 'articles:user_list' %}">Manage</a></li>
                 <li>
                     <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
                         {% csrf_token %}
