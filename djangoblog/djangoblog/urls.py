@@ -27,6 +27,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('articles/', include('articles.urls')),
     path('about/', views.about),
+    path('home/', views.homepage),
     path('', article_views.article_list, name="home"),
 ]
 

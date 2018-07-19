@@ -7,8 +7,8 @@
             <h2><a href="{% url 'articles:detail' slug=article.slug %}">{{ article.title }}</a></h2>
             <p>{{ article.snippet }}</p>
             <p>{{article.date }}</p>
-            <p class="author">added by {{ article.author.username }}</p>
             <h3><a href="{% url 'articles:delete' slug=article.slug %}">Delete Article</a></h3>
+            <h4><a href="{% url 'articles:edit' id=article.id %}">Edit</a></h4>
         </div>
     {% endfor %}
 </div>

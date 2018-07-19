@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.db.models import F
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from . import forms
 from .models import Article
@@ -24,6 +24,23 @@ def article_list(request):
 def article_detail(request, slug):
     article = Article.objects.get(slug=slug)
     return render(request, 'articles/article_detail.html', {'article':article})
+
+def article_edit(request, id=None):
+    instance = get_object_or_404(Article, id=id)
+    form = forms.CreateArticle(request.POST or None, instance=instance)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+    context = {
+        'form':form,
+        'title': instance.title,
+        'body' : instance.body,
+        'slug' : instance.slug,
+        'thumb' : instance.thumb,
+        'id' : id,
+        'article': instance,
+    }
+    return render(request, 'articles/article_edit.html', context)
 
 @login_required(login_url="/accounts/login/")
 def article_create(request):

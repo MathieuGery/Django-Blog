@@ -9,5 +9,6 @@ urlpatterns = [
     path('user_lsit/', views.user_list, name="user_list"),
     path('create/', views.article_create, name="create"),
     path('delete/<slug:slug>/', views.article_delete, name="delete"),
+    path('edit/<int:id>/', views.article_edit, name="edit"),
     url(r'^(?P<slug>[\w-]+)/$', views.article_detail, name="detail"),
 ]
