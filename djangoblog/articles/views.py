@@ -31,6 +31,7 @@ def article_edit(request, id=None):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
+        return redirect('articles:user_list')
     context = {
         'form':form,
         'title': instance.title,

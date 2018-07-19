@@ -7,15 +7,21 @@ body * {
     font-family: Debian;
 }
 
+h1, h2, h5{
+    font-weight: normal;
+    margin: 0;
+}
+
 h3 {
     font-size: normal;
     background-color: #00bda0;
     border: 1px solid red;
 }
 
-h1, h2, h4, h5{
-    font-weight: normal;
-    margin: 0;
+h4 {
+    font-size: normal;
+    background-color: #00bda0;
+    border: 1px solid green;
 }
 
 a, a:hover, a:visited{
